@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Entities.Abstract
+namespace Core.DataAccess.EntityFramework
 {
-    public interface IEntity
+    class EfEntityRepositoryBase
     {
-
     }
 }
