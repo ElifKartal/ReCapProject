@@ -32,12 +32,12 @@ namespace Business.Concrete
 
         public Color GetById(int id)
         {
-            throw new NotImplementedException();
+            return _colorDal.Get(p => p.ColorId == id);
         }
 
-        public Color GetCarsByColorId(int colorId)
+        public Color GetCarsByColorId(int id)
         {
-            return _colorDal.Get(c => c.ColorId == colorId);
+            return _colorDal.Get(c => c.ColorId == id);
         }
 
         public void Update(Color color)

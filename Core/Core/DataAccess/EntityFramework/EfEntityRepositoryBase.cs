@@ -1,4 +1,5 @@
 ﻿using Core.Entities;
+using DataAccess.Abstract;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -52,11 +53,6 @@ namespace Core.DataAccess.EntityFramework
                     : context.Set<TEntity>().Where(filter).ToList();
 
             }
-        }
-
-        public List<TEntity> GetById(int Id)
-        {
-            throw new NotImplementedException();
         }
 
         public void Update(TEntity entity)

@@ -16,14 +16,9 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
-        public static IEnumerable<object> GetCarDetailDtos()
+        public List<Car> GetCarsByBrandId(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public object GetCarsByBrandId()
-        {
-            throw new NotImplementedException();
+            return _carDal.GetAll(p => p.BrandId == id);
         }
 
         public void Add(Car car)
@@ -39,11 +34,13 @@ namespace Business.Concrete
             }
         }
 
-        
-
         public void Delete(Car car)
         {
             _carDal.Delete(car);
+        }
+        public void Update(Car car)
+        {
+            _carDal.Update(car);
         }
 
         public List<Car> GetAll()
@@ -73,13 +70,7 @@ namespace Business.Concrete
 
         public List<Car> GetByModelYear(string year)
         {
-            return _carDal.GetAll(c => c.ModelYear == year);
-        }
-
-
-        public List<Car> GetCarsByBrandId(int brandId)
-        {
-            return _carDal.GetAll(c => c.BrandId == brandId);
+            return _carDal.GetAll();
         }
 
         public List<Car> GetCarsByColorId(int colorId)
@@ -87,14 +78,10 @@ namespace Business.Concrete
             return _carDal.GetAll(c => c.ColorId == colorId);
         }
 
-        public void Update(Car car)
-        {
-            _carDal.Update(car);
-        }
 
-        public List<CarDetailDto> GetCarDetailDto()
+        public List<CarDetailDto> GetCarDetails()
         {
-            return _carDal.GetCarDetailDtos();
+            return _carDal.GetCarDetails();
         }
     }
 }

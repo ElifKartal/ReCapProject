@@ -19,6 +19,7 @@ namespace Business.Concrete
             if (brand.BrandName.Length >= 2)
             {
                 _brandDal.Add(brand);
+                Console.WriteLine(brand.BrandName);
             }
             else
             {
@@ -34,6 +35,12 @@ namespace Business.Concrete
         public List<Brand> GetAll()
         {
             return _brandDal.GetAll();
+        }
+
+        public Brand GetById(int id)
+        {
+
+            return _brandDal.Get(p => p.BrandId == id);
         }
 
         public Brand GetCarsByBrandId(int brandId)
