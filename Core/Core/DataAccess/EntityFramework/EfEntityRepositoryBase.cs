@@ -1,5 +1,4 @@
 ﻿using Core.Entities;
-using DataAccess.Abstract;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -13,10 +12,8 @@ namespace Core.DataAccess.EntityFramework
         where TEntity : class, IEntity, new()
         where TContext : DbContext, new()
     {
-
         public void Add(TEntity entity)
         {
-            //IDısposable pattern implementation of c#
             using (TContext context = new TContext())
             {
                 var addedEntity = context.Entry(entity);
@@ -40,7 +37,6 @@ namespace Core.DataAccess.EntityFramework
             using (TContext context = new TContext())
             {
                 return context.Set<TEntity>().SingleOrDefault(filter);
-
             }
         }
 
@@ -48,10 +44,9 @@ namespace Core.DataAccess.EntityFramework
         {
             using (TContext context = new TContext())
             {
-                return filter == null 
-                    ? context.Set<TEntity>().ToList() 
+                return filter == null
+                    ? context.Set<TEntity>().ToList()
                     : context.Set<TEntity>().Where(filter).ToList();
-
             }
         }
 
@@ -64,6 +59,5 @@ namespace Core.DataAccess.EntityFramework
                 context.SaveChanges();
             }
         }
-
     }
 }

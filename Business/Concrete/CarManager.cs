@@ -16,31 +16,18 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
-        public List<Car> GetCarsByBrandId(int id)
-        {
-            return _carDal.GetAll(p => p.BrandId == id);
-        }
-
         public void Add(Car car)
         {
-            if (car.DailyPrice > 0)
-            {
+            Console.WriteLine("Add Car çalıştı");
+            if (car.DailyPrice > 0 && car.Description.Length > 2)
                 _carDal.Add(car);
-                Console.WriteLine("İşlem başarılı.");
-            }
             else
-            {
-                Console.WriteLine("Fiyat 0'dan büyük olmalıdır");
-            }
+                Console.WriteLine("Günlük fiyat 0'dan büyük tanımlama 2 karakterden uzun olmalıdır.");
         }
 
         public void Delete(Car car)
         {
             _carDal.Delete(car);
-        }
-        public void Update(Car car)
-        {
-            _carDal.Update(car);
         }
 
         public List<Car> GetAll()
@@ -48,40 +35,34 @@ namespace Business.Concrete
             return _carDal.GetAll();
         }
 
-        public List<Car> GetAllByBrandId(int id)
+        public List<Car> GetAllByBrandId(int brandId)
         {
-            return _carDal.GetAll(c => c.BrandId == id);
+            return _carDal.GetAll(p => p.BrandId == brandId);
         }
 
-        public List<Car> GetAllById(int id)
+        public List<Car> GetAllByColorId(int colorId)
         {
-            return _carDal.GetAll(c => c.ColorId == id);
+            return _carDal.GetAll(p => p.ColorId == colorId);
         }
 
-        public List<Car> GetByDailyPrice(decimal min, decimal max)
+        public List<Car> GetAllByDailyPrice(int min, int max)
         {
-            return _carDal.GetAll(c => c.DailyPrice >= min && c.DailyPrice <= max);
+            return _carDal.GetAll(p => p.DailyPrice >= min && p.DailyPrice <= max);
         }
 
-        public Car GetById(int id)
+        public List<Car> GetAllByModelYear(int min, int max)
         {
-            return _carDal.Get(c => c.CarId == id);
+            return _carDal.GetAll(p => p.ModelYear >= min && p.ModelYear <= max);
         }
-
-        public List<Car> GetByModelYear(string year)
-        {
-            return _carDal.GetAll();
-        }
-
-        public List<Car> GetCarsByColorId(int colorId)
-        {
-            return _carDal.GetAll(c => c.ColorId == colorId);
-        }
-
 
         public List<CarDetailDto> GetCarDetails()
         {
             return _carDal.GetCarDetails();
+        }
+
+        public void Update(Car car)
+        {
+            _carDal.Update(car);
         }
     }
 }

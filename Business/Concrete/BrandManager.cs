@@ -7,24 +7,16 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    public class BrandManager:IBrandService
+    public class BrandManager : IBrandService
     {
         IBrandDal _brandDal;
-        public BrandManager(IBrandDal brand)
+        public BrandManager(IBrandDal brandDal)
         {
-            _brandDal = brand;
+            _brandDal = brandDal;
         }
         public void Add(Brand brand)
         {
-            if (brand.BrandName.Length >= 2)
-            {
-                _brandDal.Add(brand);
-                Console.WriteLine(brand.BrandName);
-            }
-            else
-            {
-                Console.WriteLine("Lütfen marka ismini doğru giriniz(min 2 karakter)");
-            }
+            _brandDal.Add(brand);
         }
 
         public void Delete(Brand brand)
@@ -37,15 +29,9 @@ namespace Business.Concrete
             return _brandDal.GetAll();
         }
 
-        public Brand GetById(int id)
+        public List<Brand> GetAllById(int brandId)
         {
-
-            return _brandDal.Get(p => p.BrandId == id);
-        }
-
-        public Brand GetCarsByBrandId(int brandId)
-        {
-            return _brandDal.Get(b => b.BrandId == brandId);
+            return _brandDal.GetAll(b => b.BrandId == brandId);
         }
 
         public void Update(Brand brand)
