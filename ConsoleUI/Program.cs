@@ -10,10 +10,9 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            //ListCarsTest();
-            //AddCarTest();
+            ListCarsTest();
             //ListBrandTest();
-            ListColorTest();
+            //ListColorTest();
         }
 
         private static void ListColorTest()
@@ -34,20 +33,13 @@ namespace ConsoleUI
             }
         }
 
-        private static void AddCarTest()
-        {
-            CarManager carManager = new CarManager(new EfCarDal());
-            Car car = new Car { BrandId = 4, ColorId = 2, DailyPrice = 720, ModelYear = 2021, Description = "NewCar" };
-            carManager.Add(car);
-            ListCarsTest();
-        }
 
         private static void ListCarsTest()
         {
             CarManager carManager = new CarManager(new EfCarDal());
             foreach (var car in carManager.GetCarDetails())
             {
-                Console.WriteLine(car.CarName + "-" + car.BrandName + "-" + car.ColorName + "-" + car.DailyPrice);
+                Console.WriteLine(car.CarName + "  Marka-------" + car.BrandName + "  Renk-------" + car.ColorName + "  Günlük fiyat-------" + car.DailyPrice);
             }
         }
     }
