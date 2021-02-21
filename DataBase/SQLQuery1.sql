@@ -22,6 +22,31 @@ create table Brands
 	BrandId int primary key identity (1,1),
 	BrandName nvarchar(10)
 )
+create table Users
+(
+	UserId int  primary key identity(1,1),
+	Firstname nvarchar(50),
+	LastName  NVARCHAR (50) NULL,
+    Email     NVARCHAR (50) NULL,
+    Password  INT           NULL,
+	
+)
+
+create table Customers
+(
+	UserId int primary key identity(1,1),
+	CompanyName nvarchar(50)
+)
+create table Rentals
+(
+	Id int primary key identity(1,1),
+	CustomerId nvarchar(50),
+	RentDate  NVARCHAR (50) NULL,
+    ReturnDate     NVARCHAR (50) NULL,
+    
+)
+
+
 
 insert into Cars(CarId,CarName,BrandId, ColorId, DailyPrice,ModelYear)
 values
@@ -48,3 +73,6 @@ values
 Select * from Cars
 select * from Brands
 select * from Colors
+select*from Customers
+select*from Users
+select*from Rentals
