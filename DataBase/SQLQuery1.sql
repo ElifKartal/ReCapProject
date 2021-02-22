@@ -1,5 +1,4 @@
-﻿--bu kısımda hata var çözülecek
-
+﻿
 Create table Cars
 (
 	CarId int primary key identity (1,1),
