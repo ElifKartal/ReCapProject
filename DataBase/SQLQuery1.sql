@@ -52,7 +52,7 @@ create table Rentals
 
 insert into Cars(CarId,CarName,BrandId, ColorId, DailyPrice,ModelYear)
 values
-	('1','BMW','1','1','100','2020'),
+	('1','BMW','1','1','500','2020'),
 	('2','MERCEDES','2','2','200','2006'),
 	('3','AUDİ','3','3','400','2010'),
 	('4','SKODA''4','4','300','2015')
