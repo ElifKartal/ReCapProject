@@ -42,7 +42,7 @@ namespace ConsoleUI
             {
                 foreach (var car in result.Data)
                 {
-                    Console.WriteLine(car.CarName + "  Marka-------" + car.BrandName + "  Renk-------" + car.ColorName + "  Günlük fiyat-------" + car.DailyPrice);
+                    Console.WriteLine(car.CarName + "Marka-------" + car.BrandName + "  Renk-------" + car.ColorName + "  Günlük fiyat-------" + car.DailyPrice);
                 }
             }
             else
