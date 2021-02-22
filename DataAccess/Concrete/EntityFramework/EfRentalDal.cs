@@ -18,9 +18,9 @@ namespace DataAccess.Concrete.EntityFramework
             {
                 var result = from r in filter == null ? context.Rentals : context.Rentals.Where(filter)
                              join cus in context.Customers
-                             on r.CustomerId equals cus.UserId
+                             on r.CustomerId equals cus.CustomerId
                              join u in context.Users
-                             on cus.UserId equals u.UserId
+                             on cus.CustomerId equals u.UserId
                              join c in context.Cars
                              on r.CarId equals c.CarId
                              select new RentalDetailDto
@@ -35,5 +35,6 @@ namespace DataAccess.Concrete.EntityFramework
                 return result.ToList();
             }
         }
+
     }
 }
