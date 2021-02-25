@@ -13,9 +13,10 @@ namespace ConsoleUI
             ListCarsTest();
             //ListBrandTest();
             //ListColorTest();
- 
-        }
+            
 
+        }
+ 
         private static void ListColorTest()
         {
             ColorManager colorManager = new ColorManager(new EfColorDal());
