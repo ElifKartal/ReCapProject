@@ -20,17 +20,16 @@ namespace Business.Concrete
         }
         public IResult Add(Rental rental)
         {
-            var result = _rentalDal.GetAll(r => r.CarId == rental.CarId && r.ReturnDate == DateTime.Now).ToList();
-            if (result.Count != 0)
+            var result = _rentalDal.GetAll(r => r.CarId == rental.CarId && r.ReturnDate == null).Any();
+            if (result)
             {
-                return new ErrorResult(Messages.CarNameInvalid);
+                return new ErrorResult(Messages.NotRented);
             }
             else
             {
                 _rentalDal.Add(rental);
-                return new SuccessResult(Messages.CarAdded);
+                return new SuccessResult(Messages.RentalAdded);
             }
-
 
         }
 
@@ -60,7 +59,7 @@ namespace Business.Concrete
 
         public IDataResult<List<RentalDetailDto>> GetRentalDetails()
         {
-            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails(),Messages.CarsListed);
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails(), Messages.CarsListed);
         }
 
         public IResult Update(Rental rental)

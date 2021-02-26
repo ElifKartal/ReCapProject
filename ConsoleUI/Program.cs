@@ -10,10 +10,19 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            ListCarsTest();
+            //ListCarsTest();
             //ListBrandTest();
             //ListColorTest();
-            
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            var result = rentalManager.Add(new Rental
+            {
+                CarId =1,
+                CustomerId=1,
+                RentDate=DateTime.Now,
+                //ReturnDate=new DateTime(2020,2,27)
+
+            });
+            Console.WriteLine(result.Message);
 
         }
  
@@ -44,7 +53,7 @@ namespace ConsoleUI
             {
                 foreach (var car in result.Data)
                 {
-                    Console.WriteLine(car.CarName + "Marka-------" + car.BrandName + "  Renk-------" + car.ColorName + "  Günlük fiyat-------" + car.DailyPrice);
+                    Console.WriteLine(car.BrandName + "  Renk-------" + car.ColorName + "  Günlük fiyat-------" + car.DailyPrice);
                 }
             }
             else
